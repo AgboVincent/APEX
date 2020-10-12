@@ -23,6 +23,11 @@
 
     </androidx.cardview.widget.CardView>
 
-    <include layout="@layout/home_recycler_view" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_course_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:spanCount="4"
+        tools:listitem="@layout/rv_row_home" />
 
 </LinearLayout>
