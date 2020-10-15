@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/logo"
+            android:scaleType="fitXY"
+            android:src="@drawable/info_intro" />
+
+        <TextView
+            android:id="@+id/info_text_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:text="learn past, new plartform, educational, more powerful than any other platform "
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+            android:textColor="@color/white"
+            android:textSize="9pt" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/spacing_xxxlarge" />
+
+
+    </LinearLayout>

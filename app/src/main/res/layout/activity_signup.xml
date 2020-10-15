@@ -36,8 +36,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_xxxlarge"
-        android:layout_weight=""/>
+        android:layout_height="@dimen/spacing_xxxlarge" />
 
 
     <com.google.android.material.textfield.TextInputEditText
