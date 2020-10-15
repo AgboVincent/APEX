@@ -4,17 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="@dimen/spacing_large"
     android:background="@color/colorPrimaryDark"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
 
     <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/apex_logo" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="250dp"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_weight="2"
         android:contentDescription="@string/logo"
         android:scaleType="fitXY"
         android:src="@drawable/info_intro2" />
@@ -25,16 +32,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="4dp"
+        android:layout_weight=".2"
+        android:padding="@dimen/spacing_large"
         android:text="Easy to navigate, get the most out of it."
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         android:textColor="@color/white"
         android:textSize="9pt" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_xxxlarge" />
-
 
 </LinearLayout>
