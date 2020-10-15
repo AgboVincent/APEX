@@ -13,7 +13,8 @@
         android:id="@+id/action_review"
         android:orderInCategory="100"
         android:title="Review"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        />
 
     <item
         android:id="@+id/action_quiz"

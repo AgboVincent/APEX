@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/lv">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -26,13 +27,13 @@
         android:textColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_course_content"
+        android:id="@+id/rv_topic_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:nestedScrollingEnabled="true"
         android:scrollbarThumbVertical="@color/white"
-        app:spanCount="4"
-        tools:listitem="@layout/rv_course_modules" />
+        app:spanCount="4"/>
+<!--        tools:listitem="@layout/rv_course_modules" />-->
 </LinearLayout>

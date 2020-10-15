@@ -18,7 +18,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"
         android:fillViewport="true">
@@ -28,14 +28,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/inspirational_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|start"
-                android:padding="8dp"
-                android:text="dfjngfgndfkbdf gfjnhfdgflnvmh nbdfhbvgdhfgfhfdghnhgbdfgdfhggbhhyerhjgrhjtghfngbthjeriuehrfiert398545ytrkgdfgniyyutntherrtyerh hruhryuhetioghetyhtiythyoiuerh tyroyuerhtghruhryhuyhnrnrtynhut tyortuitrhpruhuit tiuyhrtlhrtnnrtbrtuierutyhtrtiu htkjrijternggjnhtoihroigfdognhtrhnthnr gnhntyjktnguerghrtiytjt9843yyjnbdbngheit34985 dfjghrtyuirhetregnfrieuturtyhthreigherg grtnigueruitrehuiyeyheruhteruih rhtyhuiretie tiherihreih hirihytrhyeruh iuhtuhyierhgrthyeruhi  uthyeuihythuyreuhteuirhhui     reiyhrthureyhutyuh   eirhyhyhuir"
-                android:textColor="@color/colorPrimaryDark" />
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/pdfView"
+                android:layout_width="401dp"
+                android:layout_height="601dp"
+                android:isScrollContainer="true" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -52,7 +50,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/bg_main"
             android:textColor="@color/white"
-            tools:text="Next" />
+            tools:text="Quiz" />
 
     </LinearLayout>
 
