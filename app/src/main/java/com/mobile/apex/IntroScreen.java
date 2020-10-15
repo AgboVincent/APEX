@@ -80,7 +80,7 @@ public class IntroScreen extends AppCompatActivity {
         // looping through the pager.
         for (int i = 0; i < bottomBars.length; i++) {
             bottomBars[i] = new TextView(this);
-            bottomBars[i].setTextSize(50);
+            bottomBars[i].setTextSize(45);
             bottomBars[i].setText(Html.fromHtml("&#9673"));
             Layout_bars.addView(bottomBars[i]);
             bottomBars[i].setTextColor(colorsInactive);
