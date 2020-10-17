@@ -1,13 +1,18 @@
 package com.mobile.apex;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,10 +59,27 @@ public class ApexMathematicsAdapter extends RecyclerView.Adapter<ApexMathematics
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              final   Intent intent = new Intent(mContext, MathematicsTopicsDisplayActivity.class);
-                 intent.putExtra("position", position);
+                final ProgressDialog progressDialog = new ProgressDialog(mContext,
+                        R.style.BaseTheme);
+                progressDialog.setIcon( R.mipmap.ic_launcher_round );
+                progressDialog.setIndeterminate(true);
+                progressDialog.setTitle("Loading...");
+                progressDialog.setMessage("Please wait");
+                progressDialog.show();
 
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+
+                                progressDialog.dismiss();
+                            }
+                        }, 2000);
+
+                final Intent intent = new Intent(mContext, MathematicsTopicsDisplayActivity.class);
+                intent.putExtra("position", position);
                 mContext.startActivity(intent);
+
+
             }
         });
 

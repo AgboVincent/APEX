@@ -1,47 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_lesson_content"
         android:layout_width="match_parent"
         android:layout_height="@dimen/actionBarSize"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_white_24"
         android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.core.widget.NestedScrollView
+   <!-- <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarSize="8dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbarThumbVertical="@color/colorPrimaryDark"
+        android:verticalScrollbarPosition="defaultPosition">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical">-->
 
-            <com.github.barteksc.pdfviewer.PDFView
-                android:id="@+id/pdfView"
-                android:layout_width="401dp"
-                android:layout_height="601dp"
-                android:isScrollContainer="true" />
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:isScrollContainer="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_lesson_content" />
+<!--
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+-->
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center|end"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_lesson_content"
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/next_lesson_content"
@@ -49,9 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/bg_main"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimary"
             tools:text="Quiz" />
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

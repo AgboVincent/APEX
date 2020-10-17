@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="4dp">
+    android:layout_marginStart="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="8dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        app:cardCornerRadius="15dp"
         app:contentPadding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,20 +34,13 @@
                 android:id="@+id/topic_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="MATHEMATICS"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/topic_percentage"
@@ -57,13 +49,11 @@
                     android:background="@drawable/module_bg"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:singleLine="true"
                     android:text="0%"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
 
-            </LinearLayout>
 
         </LinearLayout>
 

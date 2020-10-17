@@ -1,6 +1,8 @@
 package com.mobile.apex;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,11 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MathematicsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -29,7 +34,16 @@ public class MathematicsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_courses);
         mRecyclerView = findViewById(R.id.rv_topic_content);
+        Toolbar toolbar_content = findViewById( R.id.toolbar_content );
+        setSupportActionBar(toolbar_content);
+        toolbar_content.setTitleTextColor( getResources().getColor( R.color.colorPrimaryDark ) );
 
+        toolbar_content.setNavigationOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        } );
 
 //        permission();
 
@@ -38,7 +52,7 @@ public class MathematicsActivity extends AppCompatActivity {
 
         mTopicsModelList = new ArrayList<>();
         mApexMathematicsAdapter = new ApexMathematicsAdapter(this, mTopicsModelList);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mApexMathematicsAdapter);
         populateCardView();
@@ -78,5 +92,10 @@ public class MathematicsActivity extends AppCompatActivity {
         model = new ApexTopicsModel("Probability", "0", 14);
         mTopicsModelList.add(model);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

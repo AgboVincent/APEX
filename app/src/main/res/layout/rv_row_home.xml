@@ -10,7 +10,7 @@
         android:id="@+id/card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        app:contentPadding="10dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,9 +38,11 @@
 
                 <TextView
                     android:id="@+id/course_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MATHEMATICS"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="24sp" />
 
