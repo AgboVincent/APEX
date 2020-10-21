@@ -1,7 +1,5 @@
 package com.mobile.apex;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ApexAdapter extends RecyclerView.Adapter<ApexAdapter.MyViewHolder>  {
-//    private Context mContext;
+
     private ArrayList<ApexModel> mApexModelList;
     private OnSubjectListener mOnSubjectListener;
 
@@ -39,21 +36,7 @@ public class ApexAdapter extends RecyclerView.Adapter<ApexAdapter.MyViewHolder> 
         holder.topics.setText(apexModel.getTopics());
         holder.percentage.setText(apexModel.getPercentage());
         holder.numOfModules.setText(apexModel.getNumOfModules());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                 Intent intent;
-//                switch (position){
-//                    case 0:
-//                        intent = new Intent(mContext, MathematicsActivity.class);
-//
-//                        break;
-//                    default:
-//                        throw new IllegalStateException("Unexpected value: " + position);
-//                }
-//                mContext.startActivity(intent);
-//            }
-//        });
+
 
     }
 
@@ -69,7 +52,7 @@ public class ApexAdapter extends RecyclerView.Adapter<ApexAdapter.MyViewHolder> 
 
         public MyViewHolder(@NonNull View itemView, OnSubjectListener onSubjectListener) {
             super(itemView);
-//            mContext = itemView.getContext();
+
             this.mOnSubjectListener = onSubjectListener;
             //Initialize the views
             subject = itemView.findViewById(R.id.course_title);

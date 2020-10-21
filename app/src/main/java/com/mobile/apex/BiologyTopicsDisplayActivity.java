@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -26,16 +25,16 @@ import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MathematicsTopicsDisplayActivity extends AppCompatActivity {
+public class BiologyTopicsDisplayActivity extends AppCompatActivity {
     PDFView mPDFView;
     int position = -1;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.courses_lesson);
 
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.courses_lesson);
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService( Context.CONNECTIVITY_SERVICE );
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) {
@@ -87,7 +86,7 @@ public class MathematicsTopicsDisplayActivity extends AppCompatActivity {
         } ).onLoad( new OnLoadCompleteListener() {
             @Override
             public void loadComplete(int nbPages) {
-                final ProgressDialog progressDialog = new ProgressDialog(MathematicsTopicsDisplayActivity.this,
+                final ProgressDialog progressDialog = new ProgressDialog(BiologyTopicsDisplayActivity.this,
                         R.style.BaseTheme);
                 progressDialog.setIcon( R.mipmap.ic_launcher_round );
                 progressDialog.setIndeterminate(true);
@@ -109,46 +108,64 @@ public class MathematicsTopicsDisplayActivity extends AppCompatActivity {
     private void viewPdf() {
         switch (position){
             case 0:
-                new LoadPdf().execute("https://www.cimt.org.uk/projects/mepres/book9/bk9_1.pdf");
+                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/kebo102.pdf");
                 break;
             case 1:
-                new LoadPdf().execute("https://mathcircle.berkeley.edu/sites/default/files/BMC5/docpspdf/fractions.pdf");
+                new LoadPdf().execute("https://nios.ac.in/media/documents/SrSec314NewE/Lesson-03.pdf");
                 break;
             case 2:
-                new LoadPdf().execute("https://www.tcd.ie/Economics/staff/ppwalsh/T4.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Book%3A_General_Biology_(Boundless)/1%3A_The_Study_of_Life/1.2%3A_Themes_and_Concepts_of_Biology/1.2B%3A_Levels_of_Organization_of_Living_Things.pdf\n");
                 break;
             case 3:
-                new LoadPdf().execute("https://ncert.nic.in/textbook/pdf/kemh109.pdf");
+                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/kebo108.pdf");
                 break;
             case 4:
-                new LoadPdf().execute("https://people.cs.pitt.edu/~milos/courses/cs441/lectures/Class7.pdf");
+                new LoadPdf().execute("https://snra.academy/wp-content/uploads/2020/03/diffusion-osmosis-and-active-transport.pdf");
                 break;
             case 5:
-                new LoadPdf().execute("https://www.schurzhs.org/ourpages/auto/2015/9/6/44741179/Chapter%205%20Indices%20and%20Surds%20pg_%2096%20-%20135.pdf");
+                new LoadPdf().execute("https://learn.mindset.africa/sites/default/files/resourcelib/emshare-show-note-asset/1591_fdoc.pdf");
                 break;
             case 6:
-                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/leep203.pdf");
+                new LoadPdf().execute("https://www.pearson.com/content/dam/one-dot-com/one-dot-com/us/en/higher-ed/en/products-services/course-products/fremgen-6e-info/pdf/Sample_ch04_final.pdf");
                 break;
             case 7:
-                new LoadPdf().execute("https://www.lcps.org/cms/lib4/VA01000195/Centricity/Domain/619/Direct_and_Inverse_Variation%20worksheet.pdf");
+                new LoadPdf().execute("https://etutoring.gayazahs.sc.ug/uploads/ebooks/1350536451.pdf");
                 break;
             case 8:
-                new LoadPdf().execute("https://www.bradford.ac.uk/wimba-files/msu-course/media/algebra%20&%20linear%20teaching.pdf");
+                new LoadPdf().execute("https://learn.mindset.africa/sites/default/files/resourcelib/emshare-show-note-asset/1597_fdoc.pdf");
                 break;
             case 9:
-                new LoadPdf().execute("https://www.haesemathematics.com/media/W1siZiIsIjIwMTUvMDMvMTkvNHdsM2JtbXlidF9pZ2NzZV9lcGdfdDYucGRmIl1d/igcse_epg_t6.pdf?sha=ac201ad3730f1fc7");
+                new LoadPdf().execute("https://nios.ac.in/media/documents/srsec314newE/PDFBIO.EL12.pdf");
                 break;
             case 10:
-                new LoadPdf().execute("https://users.auth.gr/~siskakis/GelfandSaul-Trigonometry.pdf");
+                new LoadPdf().execute("https://cals.arizona.edu/classes/ans215/lectures/RespiratorySystemXII.pdf");
                 break;
             case 11:
-                new LoadPdf().execute("https://www.sydney.edu.au/content/dam/students/documents/mathematics-learning-centre/introduction-to-differential-calculus.pdf");
+                new LoadPdf().execute("https://parkdee.files.wordpress.com/2011/02/chapter-3-excretion-doc2.pdf");
                 break;
             case 12:
-                new LoadPdf().execute("https://www.anderson5.net/cms/lib02/SC01001931/Centricity/Domain/2147/Additional%20Measures%20of%20Central%20Tendency%20and%20Dispersion%20including%20variance%20notes.pdf");
+                new LoadPdf().execute("https://resources.saylor.org/wwwresources/archived/site/wp-content/uploads/2010/11/Homeostasis-Overview.pdf");
                 break;
             case 13:
-                new LoadPdf().execute("https://www.cimt.org.uk/projects/mepres/allgcse/bka5.pdf");
+                new LoadPdf().execute("https://nios.ac.in/media/documents/srsec314newE/PDFBIO.EL16.pdf");
+                break;
+            case 14:
+                new LoadPdf().execute("https://www.soinc.org/sites/default/files/uploaded_files/4-17_SENSES_HANDOUT.pdf");
+                break;
+            case 15:
+                new LoadPdf().execute("https://cms.coronadousd.net/static/media/uploads/Coronado%20Middle%20School/7thGradeScience.HIV.AIDS/Chapter%2013.pdf");
+                break;
+            case 16:
+                new LoadPdf().execute("https://ncert.nic.in/textbook/pdf/gesc101.pdf");
+                break;
+            case 17:
+                new LoadPdf().execute("https://ncert.nic.in/textbook/pdf/gesc102.pdf");
+                break;
+            case 18:
+                new LoadPdf().execute("https://www.dphu.org/uploads/attachements/books/books_2314_0.pdf");
+                break;
+            case 19:
+                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/jesc109.pdf");
                 break;
 
             default:
@@ -198,7 +215,7 @@ public class MathematicsTopicsDisplayActivity extends AppCompatActivity {
             } ).onLoad( new OnLoadCompleteListener() {
                 @Override
                 public void loadComplete(int nbPages) {
-                    final ProgressDialog progressDialog = new ProgressDialog(MathematicsTopicsDisplayActivity.this,
+                    final ProgressDialog progressDialog = new ProgressDialog(BiologyTopicsDisplayActivity.this,
                             R.style.BaseTheme);
                     progressDialog.setIcon( R.mipmap.ic_launcher_round );
                     progressDialog.setIndeterminate(true);
@@ -216,5 +233,8 @@ public class MathematicsTopicsDisplayActivity extends AppCompatActivity {
                 }
             } ).load();
         }
+
+
     }
+
 }

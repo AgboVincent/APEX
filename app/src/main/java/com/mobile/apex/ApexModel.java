@@ -2,15 +2,18 @@ package com.mobile.apex;
 
 public class ApexModel {
     private String subject, percentage, topics, numOfModules;
+    int position;
 
     public ApexModel() {
     }
 
-    public ApexModel(String subject, String percentage, String topics, String numOfModules) {
+
+    public ApexModel(String subject, String percentage, String topics, String numOfModules, int position) {
         this.subject = subject;
         this.percentage = percentage;
         this.topics = topics;
         this.numOfModules = numOfModules;
+        this.position = position;
     }
 
     public String getSubject() {
@@ -43,5 +46,13 @@ public class ApexModel {
 
     public void setNumOfModules(String numOfModules) {
         this.numOfModules = numOfModules;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

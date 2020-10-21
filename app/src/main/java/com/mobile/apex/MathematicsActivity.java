@@ -26,9 +26,6 @@ public class MathematicsActivity extends AppCompatActivity {
     private List<ApexTopicsModel>mTopicsModelList;
     private  ApexMathematicsAdapter mApexMathematicsAdapter;
 
-//    public static final int REQUEST_PERMISSION = 1;
-//    File folder;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

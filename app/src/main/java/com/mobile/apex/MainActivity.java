@@ -51,15 +51,38 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
     }
 
     private void populateCardView() {
-        ApexModel model = new ApexModel("Mathematics", "0" + "%", "Indices, Geometry,Trigonometry", "14" + " modules");
+        ApexModel model = new ApexModel("Mathematics", "0" + "%", "Indices, Geometry,Trigonometry", "14" + " modules", 1);
+        mApexModelList.add(model);
+        model = new ApexModel("Chemistry", "0" + "%", "Introduction to chemistry, Structure of the atom, Separation techniques", "22" + " modules" , 2);
+        mApexModelList.add(model);
+        model = new ApexModel("Biology", "0" + "%", "Classification, Organization of life", "20" + " modules" , 3);
+        mApexModelList.add(model);
+        model = new ApexModel("Physics", "0" + "%", "Concept of matter, Fundamental and derived quantities", "23" + " modules" , 4);
         mApexModelList.add(model);
     }
 
     @Override
     public void onSubLis(int position) {
         mApexModelList.get(position);
-        Intent intent = new Intent(this, MathematicsActivity.class);
-//        intent.putExtra("position", mApexModelList.get(position));
+        Intent intent = null;
+        switch(position){
+            case 0:
+                intent = new Intent(this, MathematicsActivity.class);
+                break;
+            case 1:
+                intent = new Intent(this, ChemistryActivity.class);
+                break;
+            case 2:
+                intent = new Intent (this, ApexBiologyActivity.class);
+                break;
+            case 3:
+                intent = new Intent(this, ApexPhysicsActivity.class);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + position);
+        }
+
+
         startActivity(intent);
     }
 
