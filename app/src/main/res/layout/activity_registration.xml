@@ -7,9 +7,6 @@
     android:orientation="vertical"
     android:padding="@dimen/spacing_large">
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_middle" />
 
     <ImageView
         android:layout_width="200dp"
@@ -19,9 +16,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/apex_logo" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_large" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,14 +23,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/spacing_medium"
         android:gravity="center"
-        android:text="SIGN IN TO CONTINUE"
+        android:text="CREATE YOUR PROFILE"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_xxxlarge"/>
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -56,10 +47,6 @@
         android:textColorLink="@color/colorPrimaryLight"
         android:theme="@style/EditText.Blue" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_mlarge" />
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="match_parent"
@@ -67,7 +54,7 @@
         android:layout_marginLeft="-4dp"
         android:layout_marginRight="-4dp"
         android:hint="Password"
-        android:inputType="textPassword|numberPassword"
+        android:inputType="textPassword"
         android:maxLength="50"
         android:maxLines="1"
         android:singleLine="true"
@@ -75,25 +62,24 @@
         android:textColorHint="@color/white"
         android:theme="@style/EditText.Blue" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_mlarge" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/forgotPassword"-->
-<!--        android:layout_width="wrap_content"-->
+
+<!--    <com.google.android.material.textfield.TextInputEditText-->
+<!--        android:id="@+id/editLoginConfirmPssword"-->
+<!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center|end"-->
-<!--        android:layout_marginTop="2dp"-->
-<!--        android:layout_marginEnd="4dp"-->
-<!--        android:text="Forgot Password?"-->
-<!--        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"-->
+<!--        android:layout_marginLeft="-4dp"-->
+<!--        android:layout_marginRight="-4dp"-->
+<!--        android:hint="Confirm Pssword"-->
+<!--        android:inputType="textPassword|numberPassword"-->
+<!--        android:maxLength="50"-->
+<!--        android:maxLines="1"-->
+<!--        android:singleLine="true"-->
 <!--        android:textColor="@color/white"-->
-<!--        android:textSize="7pt" />-->
+<!--        android:textColorHint="@color/white"-->
+<!--        android:theme="@style/EditText.Blue" />-->
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_mlarge" />
+
 
     <Button
         android:id="@+id/loginBtnSignIn"
@@ -102,7 +88,7 @@
         android:layout_marginLeft="-4dp"
         android:layout_marginRight="-4dp"
         android:background="@drawable/btn_rounded_primary"
-        android:text="@string/sign_in"
+        android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />
@@ -113,15 +99,11 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="@dimen/spacing_medium" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/letting"
@@ -131,10 +113,9 @@
             android:layout_marginTop="2dp"
             android:textSize="7pt"
             android:layout_marginEnd="4dp"
-            android:text="@string/don_t_have_an_account"
+            android:text="@string/already_have_an_account_sign_in"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/white" />
-
 
         <TextView
             android:id="@+id/txtLoginSignupPoint"
@@ -143,7 +124,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:textSize="7pt"
-            android:text="@string/sign_up"
+            android:text="@string/sign_in"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/red_500" />
 
