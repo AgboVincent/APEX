@@ -22,6 +22,8 @@
         </activity>
 
         <activity android:name=".IntroScreen" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MathematicsActivity" />
         <activity android:name=".MathematicsTopicsDisplayActivity" />
