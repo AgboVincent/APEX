@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,8 +23,9 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText emailTV, passwordTV;
     private Button regBtn;
     private ProgressBar progressBar;
-
+    private TextView loginLink;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,17 @@ public class RegistrationActivity extends AppCompatActivity {
                 registerNewUser();
             }
         });
+
+        loginLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(login);
+            }
+        });
     }
 
-    private void registerNewUser(){
+    private void registerNewUser() {
         progressBar.setVisibility(View.VISIBLE);
 
         String email, password;
@@ -54,7 +64,7 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Enter Email!", Toast.LENGTH_LONG).show();
             return;
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_LONG).show();
             return;
         }
@@ -69,8 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Registration Failed! please try again", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
@@ -78,10 +87,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
-    private void initializeUI(){
+    private void initializeUI() {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.loginBtnSignIn);
         progressBar = findViewById(R.id.progressBar);
+        loginLink = findViewById(R.id.txtLoginSignupPoint);
     }
 }
