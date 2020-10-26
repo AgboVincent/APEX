@@ -25,9 +25,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button regBtn;
     private TextView signUpText;
     private ProgressBar progressBar;
+
     private FrameLayout progress;
 
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,16 +47,19 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent signUpActivity = new Intent( RegistrationActivity.this, LoginActivity.class );
                 startActivity( signUpActivity );
+                finish();
             }
         });
     }
 
-    private void registerNewUser(){
+    private void registerNewUser() {
+        progressBar.setVisibility(View.VISIBLE);
 
         String email, password;
         email = emailTV.getText().toString();
@@ -65,7 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Enter Email!", Toast.LENGTH_LONG).show();
             return;
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_LONG).show();
             return;
         }
@@ -83,8 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Registration Failed! please try again", Toast.LENGTH_LONG).show();
                             progress.setVisibility(View.GONE);
                             progressBar.setVisibility(View.GONE);
@@ -93,7 +97,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
-    private void initializeUI(){
+    private void initializeUI() {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.signUpBtnSignIn);
