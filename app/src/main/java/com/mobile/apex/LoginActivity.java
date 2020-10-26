@@ -9,7 +9,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailTV, passwordTV;
     private Button loginBtn;
     private ProgressBar progressBar;
+    private TextView loginText;
+    private FrameLayout progress;
 
     private FirebaseAuth mAuth;
     @Override
@@ -39,10 +43,17 @@ public class LoginActivity extends AppCompatActivity {
                 loginUserAccount();
             }
         });
+
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signUpActivity = new Intent( LoginActivity.this, RegistrationActivity.class );
+                startActivity( signUpActivity );
+            }
+        });
     }
 
     private void loginUserAccount(){
-        progressBar.setVisibility(View.VISIBLE);
 
         String email, password;
         email = emailTV.getText().toString();
@@ -57,12 +68,15 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        progress.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_LONG).show();
+                            progress.setVisibility(View.GONE);
                             progressBar.setVisibility(View.GONE);
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -70,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Login Failed! Please try again later", Toast.LENGTH_LONG).show();
+                            progress.setVisibility(View.GONE);
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -82,5 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordTV = findViewById(R.id.password);
         loginBtn = findViewById(R.id.loginBtnSignIn);
         progressBar = findViewById(R.id.progressBar);
+        loginText = findViewById(R.id.txtLoginSignupPoint);
+        progress = findViewById(R.id.progress);
     }
 }

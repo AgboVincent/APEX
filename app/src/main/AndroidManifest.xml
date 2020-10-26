@@ -26,6 +26,8 @@
         <activity android:name=".MathematicsActivity" />
         <activity android:name=".MathematicsTopicsDisplayActivity" />
         <activity android:name=".NoItemInternetImage" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

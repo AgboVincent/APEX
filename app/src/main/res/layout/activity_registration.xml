@@ -7,6 +7,40 @@
     android:orientation="vertical"
     android:padding="@dimen/spacing_large">
 
+    <FrameLayout
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="7pt"
+        android:text="please wait a moment!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:textColor="@color/white" />
+
+    <ProgressBar
+        android:layout_gravity="center"
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_middle" />
 
     <ImageView
         android:layout_width="200dp"
@@ -16,6 +50,9 @@
         android:scaleType="fitXY"
         android:src="@drawable/apex_logo" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_large" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,11 +60,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/spacing_medium"
         android:gravity="center"
-        android:text="CREATE YOUR PROFILE"
+        android:text="CREATE AN ACCOUNT"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_xxxlarge"/>
 
 
     <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +87,10 @@
         android:textColorLink="@color/colorPrimaryLight"
         android:theme="@style/EditText.Blue" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_mlarge" />
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="match_parent"
@@ -54,7 +98,7 @@
         android:layout_marginLeft="-4dp"
         android:layout_marginRight="-4dp"
         android:hint="Password"
-        android:inputType="textPassword"
+        android:inputType="textPassword|numberPassword"
         android:maxLength="50"
         android:maxLines="1"
         android:singleLine="true"
@@ -62,42 +106,42 @@
         android:textColorHint="@color/white"
         android:theme="@style/EditText.Blue" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_mlarge" />
 
+    <!--    <TextView-->
+    <!--        android:id="@+id/forgotPassword"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center|end"-->
+    <!--        android:layout_marginTop="2dp"-->
+    <!--        android:layout_marginEnd="4dp"-->
+    <!--        android:text="Forgot Password?"-->
+    <!--        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="7pt" />-->
 
-<!--    <com.google.android.material.textfield.TextInputEditText-->
-<!--        android:id="@+id/editLoginConfirmPssword"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="-4dp"-->
-<!--        android:layout_marginRight="-4dp"-->
-<!--        android:hint="Confirm Pssword"-->
-<!--        android:inputType="textPassword|numberPassword"-->
-<!--        android:maxLength="50"-->
-<!--        android:maxLines="1"-->
-<!--        android:singleLine="true"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textColorHint="@color/white"-->
-<!--        android:theme="@style/EditText.Blue" />-->
-
-
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_mlarge" />
 
     <Button
-        android:id="@+id/loginBtnSignIn"
+        android:id="@+id/signUpBtnSignIn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginLeft="-4dp"
         android:layout_marginRight="-4dp"
         android:background="@drawable/btn_rounded_primary"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_medium" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,8 +161,9 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/white" />
 
+
         <TextView
-            android:id="@+id/txtLoginSignupPoint"
+            android:id="@+id/txtsignUpSignupPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -130,5 +175,8 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spacing_xxxlarge" />
 
 </LinearLayout>

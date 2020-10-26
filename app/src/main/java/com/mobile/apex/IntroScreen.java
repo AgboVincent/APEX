@@ -97,7 +97,7 @@ public class IntroScreen extends AppCompatActivity {
         // set preference to false
         preferenceManager.setFirstTimeLaunch(false);
         // creating an intent to start the next activity
-        startActivity(new Intent(this, RegistrationActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
     // Onpager listener for the viewpager
