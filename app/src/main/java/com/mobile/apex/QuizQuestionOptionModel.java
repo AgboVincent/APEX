@@ -1,9 +1,9 @@
 package com.mobile.apex;
 
-public class QuizOptionModel {
+public class QuizQuestionOptionModel {
     private String a, b, c, d;
 
-    public QuizOptionModel(String a, String b, String c, String d) {
+    public QuizQuestionOptionModel(String a, String b, String c, String d) {
         this.a = a;
         this.b = b;
         this.c = c;
