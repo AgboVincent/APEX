@@ -2,6 +2,7 @@ package com.mobile.apex.Screens;
 
 import android.os.Bundle;
 
+import com.mobile.apex.Models.QuizModel;
 import com.mobile.apex.R;
 
 import androidx.annotation.Nullable;

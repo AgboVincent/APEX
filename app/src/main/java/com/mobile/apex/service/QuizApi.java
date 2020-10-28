@@ -1,7 +1,7 @@
 package com.mobile.apex.service;
 
 
-import com.mobile.apex.QuizModel;
+import com.mobile.apex.Models.QuizModel;
 
 import retrofit2.Call;
 import retrofit2.http.*;
