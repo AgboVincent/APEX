@@ -28,10 +28,17 @@
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity android:name=".Screens.LoginActivity"
             android:windowSoftInputMode="stateAlwaysVisible"/>
-        <activity android:name=".Screens.QuizActivity" />
         <activity android:name=".Screens.MainActivity" />
+        <activity android:name=".Screens.QuizActivity" />
         <activity android:name=".Screens.MathematicsActivity" />
+        <activity android:name=".Screens.ChemistryActivity" />
+        <activity android:name=".Screens.ApexBiologyActivity" />
+        <activity android:name=".Screens.ApexPhysicsActivity" />
+        <activity android:name=".Screens.PhysicsTopicsDisplay" />
+        <activity android:name=".Screens.BiologyTopicsDisplayActivity" />
+        <activity android:name=".Screens.ChemistryTopicsDisplayActivity" />
         <activity android:name=".Screens.MathematicsTopicsDisplayActivity" />
+
         <activity android:name=".NoItemInternetImage" />
     </application>
 
