@@ -71,7 +71,10 @@ public class QuizActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("APEX Quiz");
 
-        fetchQuizzes("chemistry");
+        String subjectType = getIntent().getStringExtra("subject_type");
+        //Toast.makeText(this, "passed " + subjectType, Toast.LENGTH_LONG).show();
+
+        fetchQuizzes(subjectType);
 
         btn_next.setOnClickListener(v -> next());
     }

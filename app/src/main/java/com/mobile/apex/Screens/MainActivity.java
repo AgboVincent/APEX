@@ -1,5 +1,6 @@
 package com.mobile.apex.Screens;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSubjectListener {
 
@@ -96,15 +99,15 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
         switch (item.getItemId()) {
             case R.id.action_about:
-
                 break;
             case R.id.action_review:
                 /*Intent intent = new Intent( this, MainContent.class );
                 startActivity( intent );*/
+                break;
+            case R.id.action_quiz:
+                selectQuizSubject();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -164,6 +167,32 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
                 doubleBackToExit = false;
             }
         }, 2000 );
+    }
+
+    public void selectQuizSubject(){
+        String[] subjects = new String[]{"Mathematics", "Physics", "Biology", "Chemistry"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Select Quiz Subject")
+                .setSingleChoiceItems(subjects, -1, (dialog, which) -> {
+                    switch (which){
+                        case 0:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "mathematics"));
+                            break;
+                        case 1:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "physics"));
+                            break;
+                        case 2:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "biology"));
+                            break;
+                        case 3:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "chemistry"));
+                            break;
+                    }
+                    dialog.dismiss();
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }
