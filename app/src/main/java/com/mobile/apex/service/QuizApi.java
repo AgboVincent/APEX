@@ -8,5 +8,5 @@ import retrofit2.http.*;
 
 public interface QuizApi {
     @GET("q/20")
-    Call<QuizModel> getQuizBySubject(@Path("subject") String subject);
+    Call<QuizModel> getQuizBySubject(@Query("subject") String subject);
 }

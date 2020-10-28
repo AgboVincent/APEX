@@ -30,7 +30,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void fetchQuizzes() {
-        QuizApi quizApi =  RetrofitServiceBuilder.buildService(QuizApi.class);
+        QuizApi quizApi =  RetrofitServiceBuilder.getRetrofitInstance().create(QuizApi.class);
 
         Call<QuizModel> call = quizApi.getQuizBySubject("chemistry");
         call.enqueue(new Callback<QuizModel>() {
@@ -43,7 +43,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<QuizModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "${t.message}", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
