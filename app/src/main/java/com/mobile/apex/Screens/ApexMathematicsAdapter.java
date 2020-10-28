@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,19 +8,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mobile.apex.Models.ApexTopicsModel;
+import com.mobile.apex.R;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ApexChemistryAdapter extends RecyclerView.Adapter<ApexChemistryAdapter.MyViewHolder> {
+public class ApexMathematicsAdapter extends RecyclerView.Adapter<ApexMathematicsAdapter.MyViewHolder>{
     private Context mContext;
     private List<ApexTopicsModel> mApexTopicsModelList;
 
-    public ApexChemistryAdapter(Context context, List<ApexTopicsModel> apexTopicsModelList) {
+    public ApexMathematicsAdapter(Context context, List<ApexTopicsModel> apexTopicsModelList) {
         mContext = context;
         mApexTopicsModelList = apexTopicsModelList;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView topics, topicsPercentage;
+        public CardView mCardView;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            mContext = itemView.getContext();
+            topics = itemView.findViewById(R.id.topic_title);
+            topicsPercentage = itemView.findViewById(R.id.topic_percentage);
+            mCardView = itemView.findViewById(R.id.card);
+
+        }
     }
 
     @NonNull
@@ -28,7 +45,7 @@ public class ApexChemistryAdapter extends RecyclerView.Adapter<ApexChemistryAdap
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_course_modules, parent, false);
 
-        return new ApexChemistryAdapter.MyViewHolder(itemView);
+        return new ApexMathematicsAdapter.MyViewHolder(itemView);
     }
 
     @Override
@@ -54,12 +71,26 @@ public class ApexChemistryAdapter extends RecyclerView.Adapter<ApexChemistryAdap
                                 progressDialog.dismiss();
                             }
                         }, 2000);
-                Intent intent = new Intent(mContext, ChemistryTopicsDisplayActivity.class);
+                Intent intent = new Intent(mContext, MathematicsTopicsDisplayActivity.class);
+//                switch (position){
+//                    case 0:
+//                        intent = new Intent(mContext, MathematicsTopicsDisplayActivity.class);
+//                        break;
+//                    case 1:
+//                        intent = new Intent(mContext, ChemistryTopicsDisplayActivity.class);
+//                        break;
+//                    default:
+//                        throw new IllegalStateException("Unexpected value: " + position);
+//                }
+
+//                final Intent intent = new Intent(mContext, MathematicsTopicsDisplayActivity.class);
                 intent.putExtra("position", position);
                 mContext.startActivity(intent);
-            }
 
+
+            }
         });
+
 
     }
 
@@ -68,16 +99,5 @@ public class ApexChemistryAdapter extends RecyclerView.Adapter<ApexChemistryAdap
         return mApexTopicsModelList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView topics, topicsPercentage;
-        public CardView mCardView;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mContext = itemView.getContext();
-            topics = itemView.findViewById(R.id.topic_title);
-            topicsPercentage = itemView.findViewById(R.id.topic_percentage);
-            mCardView = itemView.findViewById(R.id.card);
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +16,8 @@ import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnRenderListener;
+import com.mobile.apex.NoItemInternetImage;
+import com.mobile.apex.R;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -25,15 +27,14 @@ import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class BiologyTopicsDisplayActivity extends AppCompatActivity {
+public class PhysicsTopicsDisplay extends AppCompatActivity {
     PDFView mPDFView;
     int position = -1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.courses_lesson);
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService( Context.CONNECTIVITY_SERVICE );
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -86,7 +87,7 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
         } ).onLoad( new OnLoadCompleteListener() {
             @Override
             public void loadComplete(int nbPages) {
-                final ProgressDialog progressDialog = new ProgressDialog(BiologyTopicsDisplayActivity.this,
+                final ProgressDialog progressDialog = new ProgressDialog(PhysicsTopicsDisplay.this,
                         R.style.BaseTheme);
                 progressDialog.setIcon( R.mipmap.ic_launcher_round );
                 progressDialog.setIndeterminate(true);
@@ -108,65 +109,73 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
     private void viewPdf() {
         switch (position){
             case 0:
-                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/kebo102.pdf");
+                new LoadPdf().execute("https://www.nust.na/sites/default/files/documents/Chapter%205_Properties%20and%20Structure%20of%20Matter.pdf");
                 break;
             case 1:
-                new LoadPdf().execute("https://nios.ac.in/media/documents/SrSec314NewE/Lesson-03.pdf");
+                new LoadPdf().execute("https://jwolffphilosophy.files.wordpress.com/2018/02/wolff_fundamental-quantities.pdf");
                 break;
             case 2:
-                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Book%3A_General_Biology_(Boundless)/1%3A_The_Study_of_Life/1.2%3A_Themes_and_Concepts_of_Biology/1.2B%3A_Levels_of_Organization_of_Living_Things.pdf\n");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Map%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/03%3A_Motion_Along_a_Straight_Line/3.02%3A_Position%2C_Displacement%2C_and_Average_Velocity.pdf");
                 break;
             case 3:
-                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/kebo108.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/College_Physics/Book%3A_College_Physics_(OpenStax)/11%3A_Fluid_Statics/11.01%3A_What_Is_a_Fluid.pdf");
                 break;
             case 4:
-                new LoadPdf().execute("https://snra.academy/wp-content/uploads/2020/03/diffusion-osmosis-and-active-transport.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Map%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/14%3A_Fluid_Mechanics/14.02%3A_Fluids%2C_Density%2C_and_Pressure_(Part_1).pdf");
                 break;
             case 5:
-                new LoadPdf().execute("https://learn.mindset.africa/sites/default/files/resourcelib/emshare-show-note-asset/1591_fdoc.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Book%3A_Classical_Mechanics_(Tatum)/16%3A_Hydrostatics/16.07%3A_Archimedes'_Principle.pdf");
                 break;
             case 6:
-                new LoadPdf().execute("https://www.pearson.com/content/dam/one-dot-com/one-dot-com/us/en/higher-ed/en/products-services/course-products/fremgen-6e-info/pdf/Sample_ch04_final.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Book%3A_Classical_Mechanics_(Tatum)/16%3A_Hydrostatics/16.09%3A_Floating_Bodies.pdf");
                 break;
             case 7:
-                new LoadPdf().execute("https://etutoring.gayazahs.sc.ug/uploads/ebooks/1350536451.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Supplemental_Modules_(Classical_Mechanics)/Motion.pdf");
                 break;
             case 8:
-                new LoadPdf().execute("https://learn.mindset.africa/sites/default/files/resourcelib/emshare-show-note-asset/1597_fdoc.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/College_Physics/Book%3A_College_Physics_(OpenStax)/16%3A_Oscillatory_Motion_and_Waves/16.06%3A__Uniform_Circular_Motion_and_Simple_Harmonic_Motion.pdf");
                 break;
             case 9:
-                new LoadPdf().execute("https://nios.ac.in/media/documents/srsec314newE/PDFBIO.EL12.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Physics_(Boundless)/2%3A_Kinematics/2.2%3A_Speed_and_Velocity.pdf");
                 break;
             case 10:
-                new LoadPdf().execute("https://cals.arizona.edu/classes/ans215/lectures/RespiratorySystemXII.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/College_Physics/Book%3A_College_Physics_(OpenStax)/02%3A_Kinematics/2.04%3A_Acceleration.pdf\n");
                 break;
             case 11:
-                new LoadPdf().execute("https://parkdee.files.wordpress.com/2011/02/chapter-3-excretion-doc2.pdf");
+                new LoadPdf().execute("https://ww2.odu.edu/~jdudek/Phys111N_materials/4_circular_motion_gravity.pdf");
                 break;
             case 12:
-                new LoadPdf().execute("https://resources.saylor.org/wwwresources/archived/site/wp-content/uploads/2010/11/Homeostasis-Overview.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Map%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/02%3A_Vectors/2.02%3A_Scalars_and_Vectors_(Part_1).pdf");
                 break;
             case 13:
-                new LoadPdf().execute("https://nios.ac.in/media/documents/srsec314newE/PDFBIO.EL16.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Physics_(Boundless)/8%3A_Static_Equilibrium%2C_Elasticity%2C_and_Torque/8.2%3A_Conditions_for_Equilibrium.pdf");
                 break;
             case 14:
-                new LoadPdf().execute("https://www.soinc.org/sites/default/files/uploaded_files/4-17_SENSES_HANDOUT.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_I_-_Classical_Mechanics_(Gea-Banacloche)/11%3A_Simple_Harmonic_Motion/11.02%3A_Simple_Harmonic_Motion.pdf");
                 break;
             case 15:
-                new LoadPdf().execute("https://cms.coronadousd.net/static/media/uploads/Coronado%20Middle%20School/7thGradeScience.HIV.AIDS/Chapter%2013.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Mechanics_and_Relativity_(Idema)/02%3A_Forces/2.01%3A_Newton's_Laws_of_Motion.pdf");
                 break;
             case 16:
-                new LoadPdf().execute("https://ncert.nic.in/textbook/pdf/gesc101.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Supplemental_Modules_(Classical_Mechanics)/Miscellaneous_Classical_Mechanics_Topics/Energy.pdf");
                 break;
             case 17:
-                new LoadPdf().execute("https://ncert.nic.in/textbook/pdf/gesc102.pdf");
+            case 19:
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Introductory_Physics_-_Building_Models_to_Describe_Our_World_(Martin_Neary_Rinaldo_and_Woodman)/08%3A_Potential_Energy_and_Conservation_of_Energy/8.03%3A_Mechanical_Energy_and_Conservation_of_Energy.pdf");
                 break;
             case 18:
-                new LoadPdf().execute("https://www.dphu.org/uploads/attachements/books/books_2314_0.pdf");
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/College_Physics/Book%3A_College_Physics_(OpenStax)/07%3A_Work_Energy_and_Energy_Resources/7.02%3A_Kinetic_Energy_and_the_Work-Energy_Theorem.pdf");
                 break;
-            case 19:
-                new LoadPdf().execute("https://ncert.nic.in/ncerts/l/jesc109.pdf");
+            case 20:
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Map%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/07%3A_Work_and_Kinetic_Energy/7.05%3A_Power.pdf");
                 break;
+            case 21:
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_Calculus-Based_Physics_(Schnick)/Volume_A%3A_Kinetics_Statics_and_Thermodynamics/35A%3A_Temperature_Internal_Energy_Heat_and_Specific_Heat_Capacity.pdf");
+                break;
+                case 22:
+                new LoadPdf().execute("https://batch.libretexts.org/print/url=https://phys.libretexts.org/Courses/Joliet_Junior_College/Physics_201_-_Fall_2019v2/Book%3A_Custom_Physics_textbook_for_JJC/12%3A_Temperature_and_Kinetic_Theory/12.01%3A_Temperature_and_Heat/Heat_Transfer%2C_Specific_Heat%2C_and_Calorimetry.pdf");
+                break;
+
 
             default:
                 throw new IllegalStateException("Unexpected value: " + position);
@@ -215,7 +224,7 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
             } ).onLoad( new OnLoadCompleteListener() {
                 @Override
                 public void loadComplete(int nbPages) {
-                    final ProgressDialog progressDialog = new ProgressDialog(BiologyTopicsDisplayActivity.this,
+                    final ProgressDialog progressDialog = new ProgressDialog(PhysicsTopicsDisplay.this,
                             R.style.BaseTheme);
                     progressDialog.setIcon( R.mipmap.ic_launcher_round );
                     progressDialog.setIndeterminate(true);
@@ -236,5 +245,6 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
 
 
     }
+
 
 }

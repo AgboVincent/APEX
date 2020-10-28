@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Models;
 
 public class ApexTopicsModel {
     String topics, topicsPercentage;

@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import android.content.Context;
 
