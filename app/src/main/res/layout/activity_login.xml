@@ -86,7 +86,7 @@
         android:textColorHighlight="@color/colorPrimaryLight"
         android:textColorHint="@color/white"
         android:textColorLink="@color/colorPrimaryLight"
-        android:theme="@style/EditText.Blue" />
+        android:theme="@style/EditText.Blue"/>
 
     <View
         android:layout_width="0dp"
