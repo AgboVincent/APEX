@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Models;
 
 import java.util.List;
 

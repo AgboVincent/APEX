@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.mobile.apex.PreferenceManager;
+import com.mobile.apex.R;
+import com.mobile.apex.Screens.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;

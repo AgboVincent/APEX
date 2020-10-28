@@ -1,7 +1,9 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.mobile.apex.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.mobile.apex;
+package com.mobile.apex.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mobile.apex.ApexPhysicsAdapter;
+import com.mobile.apex.Models.ApexTopicsModel;
+import com.mobile.apex.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApexPhysicsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<ApexTopicsModel> mTopicsModelList;
-    private  ApexPhysicsAdapter mApexPhysicsAdapter;
+    private ApexPhysicsAdapter mApexPhysicsAdapter;
 
 
 
