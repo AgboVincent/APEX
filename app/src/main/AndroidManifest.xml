@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Screens.QuizActivity"
+            android:name=".Screens.SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/BaseTheme">
             <intent-filter>
@@ -28,7 +28,7 @@
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity android:name=".Screens.LoginActivity"
             android:windowSoftInputMode="stateAlwaysVisible"/>
-<!--        <activity android:name=".QuizActivity" />-->
+        <activity android:name=".Screens.QuizActivity" />
         <activity android:name=".Screens.MainActivity" />
         <activity android:name=".Screens.MathematicsActivity" />
         <activity android:name=".Screens.MathematicsTopicsDisplayActivity" />
