@@ -1,11 +1,22 @@
 package com.mobile.apex.Screens;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -16,6 +27,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.mobile.apex.Models.QuizModel;
 import com.mobile.apex.Models.QuizQuestionModel;
 import com.mobile.apex.Models.QuizQuestionOptionModel;
+import com.mobile.apex.NoItemInternetImage;
 import com.mobile.apex.R;
 
 import androidx.annotation.Nullable;
@@ -28,6 +40,7 @@ import com.mobile.apex.service.RetrofitServiceBuilder;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,14 +61,25 @@ public class QuizActivity extends AppCompatActivity {
     private int question_total;
     private QuizQuestionModel current_question;
     List<QuizQuestionModel> questionModels;
+    FrameLayout layoutGone;
 
     private int score;
     private long back_pressed;
-
+    String subjectType;
+    boolean doubleBackToExit = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_new);
+
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService( Context.CONNECTIVITY_SERVICE );
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) {
+
+        } else {
+            Intent i = new Intent( this, NoItemInternetImage.class );
+            startActivity( i );
+        }
 
         quiz_toolbar = findViewById(R.id.quiz_toolbar);
         mtv_question = findViewById(R.id.mtv_question);
@@ -68,29 +92,60 @@ public class QuizActivity extends AppCompatActivity {
         btn_next = findViewById(R.id.btn_next);
 
         setSupportActionBar(quiz_toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull( getSupportActionBar() ).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("APEX Quiz");
-
-        String subjectType = getIntent().getStringExtra("subject_type");
+        quiz_toolbar.setTitleTextColor( getResources().getColor(R.color.colorPrimaryDark ));
+        subjectType = getIntent().getStringExtra("subject_type");
         //Toast.makeText(this, "passed " + subjectType, Toast.LENGTH_LONG).show();
 
+        quiz_toolbar.setNavigationOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        } );
+
+        layoutGone = findViewById( R.id.layout_gone );
+        layoutGone.setVisibility( View.VISIBLE );
+
         fetchQuizzes(subjectType);
+        final ProgressDialog progressDialog = new ProgressDialog(QuizActivity.this,
+                R.style.BaseTheme);
+        progressDialog.setIcon( R.mipmap.ic_launcher_round );
+        progressDialog.setIndeterminate(true);
+        progressDialog.setTitle("Loading...");
+        progressDialog.setMessage("Please wait");
+        progressDialog.show();
 
-        btn_next.setOnClickListener(v -> next());
-    }
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
 
-    private void fetchQuizzes(String subject) {
+                        progressDialog.dismiss();
+                    }
+                }, 3000);
+
+                btn_next.setOnClickListener(v -> next());
+
+            }
+
+
+    public void fetchQuizzes(String subject) {
         QuizApi quizApi =  RetrofitServiceBuilder.getRetrofitInstance().create(QuizApi.class);
 
         Call<QuizModel> call = quizApi.getQuizBySubject(subject);
         call.enqueue(new Callback<QuizModel>() {
             @Override
             public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
+
                 if (response.isSuccessful()) {
+                    layoutGone.setVisibility( View.GONE );
+                    btn_next.setVisibility( View.VISIBLE );
                     QuizModel res = response.body();
                     List<QuizQuestionModel> data = res.getData();
                     beginQuiz(data);
                 }
+
             }
 
             @Override
@@ -133,6 +188,10 @@ public class QuizActivity extends AppCompatActivity {
             btn_next.setText("Next");
         }else{
             //Finish quiz.
+            TextView txtTitle = findViewById( R.id.txtTitle );
+            TextView txtMessage = findViewById( R.id.txtContent );
+            txtTitle.setText( "Quiz Results" );
+            txtMessage.setText( "Score: " + score );
             finishQuiz();
         }
     }
@@ -189,6 +248,7 @@ public class QuizActivity extends AppCompatActivity {
                 break;
         }
     }
+
 
     private void finishQuiz(){
         new AlertDialog.Builder(this)

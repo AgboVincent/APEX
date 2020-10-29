@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.mobile.apex.ApexPhysicsAdapter;
@@ -14,6 +17,7 @@ import com.mobile.apex.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ApexPhysicsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -29,6 +33,7 @@ public class ApexPhysicsActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.rv_topic_content);
         Toolbar toolbar_content = findViewById( R.id.toolbar_content );
         setSupportActionBar(toolbar_content);
+        Objects.requireNonNull( getSupportActionBar() ).setTitle("Physics");
         toolbar_content.setTitleTextColor( getResources().getColor( R.color.colorPrimaryDark ) );
 
         toolbar_content.setNavigationOnClickListener( new View.OnClickListener() {
@@ -103,6 +108,26 @@ public class ApexPhysicsActivity extends AppCompatActivity {
         mTopicsModelList.add(model);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate( R.menu.module_menu_main, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_quiz:
+                startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "physics"));
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
 
     @Override
     public void onBackPressed() {

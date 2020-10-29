@@ -6,22 +6,8 @@
 
     <item
         android:id="@+id/action_quiz"
-        android:orderInCategory="0"
-        android:title="Take a Quiz"
-        app:showAsAction="never" />
-
-
-    <item
-        android:id="@+id/action_about"
         android:orderInCategory="100"
-        android:title="About"
-        app:showAsAction="never" />
-
-
-    <item
-        android:id="@+id/other_quizes"
-        android:orderInCategory="10"
-        android:title="Other Quizes"
+        android:title="Take a Quiz"
         app:showAsAction="never" />
 
 </menu>

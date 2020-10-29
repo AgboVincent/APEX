@@ -23,11 +23,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSubjectListener {
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
         setContentView( R.layout.activity_main );
         Toolbar toolbar = findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
+        Objects.requireNonNull( getSupportActionBar() ).setTitle("Home");
         toolbar.setTitleTextColor( getResources().getColor(R.color.white ));
         mRecyclerView = findViewById(R.id.rv_course_content);
         mApexModelList = new ArrayList<>();
@@ -50,8 +54,11 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mApexAdapter);
+
         populateCardView();
 //        toast.myToast( "Welcome", this );
+
+
     }
 
     private void populateCardView() {
@@ -101,57 +108,46 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_about:
-                break;
-            case R.id.action_review:
-                /*Intent intent = new Intent( this, MainContent.class );
-                startActivity( intent );*/
+                about();
                 break;
             case R.id.action_quiz:
                 selectQuizSubject();
+                break;
+            case R.id.other_quizes:
+                selectOtherQuizSubject();
                 break;
         }
         return super.onOptionsItemSelected(item);
 
     }
 
+    private void about() {
 
-    private void exit() {
-        //Alert Dialog
-        Rect displayRectangle = new Rect();
-        Window window = MainActivity.this.getWindow();
-        window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(
-                MainActivity.this, R.style.CustomDialog);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View view = LayoutInflater
-                .from(MainActivity.this)
-                .inflate(R.layout.exit_dialog, viewGroup, false);
-
-        view.setMinimumWidth((int) (displayRectangle.width() * 1f));
-        builder.setView(view);
-
-        builder.setIcon( R.mipmap.ic_launcher_round );
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-        final ImageButton exitDialog = view.findViewById(R.id.exit_cancel);
-        ImageButton exitButton = view.findViewById(R.id.exit_btn);
-
-        exitDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
-        exitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-                finishAffinity();
-            }
-        });
+        new android.app.AlertDialog.Builder(this)
+                .setTitle(R.string.about)
+                .setMessage(R.string.about_content)
+                .setPositiveButton("Back", (dialog, which) -> {
+                    //Dismiss and go home
+                    dialog.dismiss();
+                }).setCancelable(false).show();
 
     }
+
+
+    private void exit() {
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton( "Yes", (dialog, which) -> {
+                    dialog.dismiss();
+                } )
+                .setPositiveButton("Back", (dialog, which) -> {
+                    //Dismiss and exit
+                    dialog.dismiss();
+                    finishAffinity();
+                }).setCancelable(false).show();
+    }
+
     @Override
     public void onBackPressed() {
         exit();
@@ -160,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
             return;
         }
         this.doubleBackToExit = true;
-        Toast.makeText( this, "Click back again to exit", Toast.LENGTH_SHORT ).show();
+//        Toast.makeText( this, "Click back again to exit", Toast.LENGTH_SHORT ).show();
         new Handler( ).postDelayed( new Runnable() {
             @Override
             public void run() {
@@ -193,6 +189,43 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
+
+    }
+    public void selectOtherQuizSubject(){
+        String[] subjects = new String[]{"English", "Government", "Economics", "Geopraphy", "History", "Accounting", "Insurance"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Select Quiz Subject")
+                .setSingleChoiceItems(subjects, -1, (dialog, which) -> {
+                    switch (which){
+                        case 0:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "english"));
+                            break;
+                        case 1:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "government"));
+                            break;
+                        case 2:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "economics"));
+                            break;
+                        case 3:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "geography"));
+                            break;
+                        case 4:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "history"));
+                            break;
+                        case 5:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "accounting"));
+                            break;
+                        case 6:
+                            startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "insurance"));
+                            break;
+
+                    }
+                    dialog.dismiss();
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
 }

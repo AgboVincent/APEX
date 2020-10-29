@@ -13,10 +13,11 @@
         android:id="@+id/toolbar_content"
         android:layout_width="match_parent"
         android:layout_height="@dimen/actionBarSize"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/module_menu_main"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/inspirational_text"

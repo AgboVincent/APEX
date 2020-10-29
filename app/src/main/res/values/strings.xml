@@ -41,4 +41,6 @@
     <string name="glad_to_see_you">GLAD TO SEE YOU</string>
     <string name="welcome">WELCOME</string>
     <string name="geometry_algebra_equations">Geometry, Algebra, Equations</string>
+    <string name="about">About</string>
+    <string name="about_content">APEX is an online E-learning application, developed by the Google Africa Developer Scholarship 2020 Students under mobile-edu-18.</string>
 </resources>

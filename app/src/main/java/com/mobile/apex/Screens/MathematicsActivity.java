@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.mobile.apex.Models.ApexTopicsModel;
@@ -13,6 +16,7 @@ import com.mobile.apex.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MathematicsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -26,6 +30,7 @@ public class MathematicsActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.rv_topic_content);
         Toolbar toolbar_content = findViewById( R.id.toolbar_content );
         setSupportActionBar(toolbar_content);
+        Objects.requireNonNull( getSupportActionBar() ).setTitle("Mathematics");
         toolbar_content.setTitleTextColor( getResources().getColor( R.color.colorPrimaryDark ) );
 
         toolbar_content.setNavigationOnClickListener( new View.OnClickListener() {
@@ -81,6 +86,25 @@ public class MathematicsActivity extends AppCompatActivity {
         mTopicsModelList.add(model);
         model = new ApexTopicsModel("Probability", "0", 14);
         mTopicsModelList.add(model);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate( R.menu.module_menu_main, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_quiz:
+                startActivity(new Intent(this, QuizActivity.class).putExtra("subject_type", "mathematics"));
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
 
     }
 

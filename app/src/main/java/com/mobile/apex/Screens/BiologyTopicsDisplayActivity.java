@@ -11,6 +11,8 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
@@ -30,6 +32,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class BiologyTopicsDisplayActivity extends AppCompatActivity {
     PDFView mPDFView;
     int position = -1;
+    FrameLayout layoutGone;
+    Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +59,18 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
         position = getIntent().getIntExtra("position", -1);
         viewPdf();
 
+        layoutGone = findViewById( R.id.layout_gone );
 
 
+        next = findViewById( R.id.next_lesson_content );
+        next.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                position = +1;
+                layoutGone.setVisibility( View.VISIBLE );
+                viewPdf();
+            }
+        } );
 
 
         toolbar_lesson_content.setNavigationOnClickListener( new View.OnClickListener() {
@@ -231,7 +245,9 @@ public class BiologyTopicsDisplayActivity extends AppCompatActivity {
 
                                     progressDialog.dismiss();
                                 }
-                            }, 3000);
+                            }, 3000);/*
+                    layoutGone.setVisibility( View.GONE );
+                    next.setVisibility( View.VISIBLE );*/
                 }
             } ).load();
         }
