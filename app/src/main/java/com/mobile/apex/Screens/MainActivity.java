@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
     private ArrayList<ApexModel> mApexModelList;
     private  ApexAdapter mApexAdapter;
     Toast toast;
-    boolean doubleBackToExit = false;
+    private long back_pressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,29 +140,22 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
                 .setMessage("Are you sure you want to exit?")
                 .setNegativeButton( "Yes", (dialog, which) -> {
                     dialog.dismiss();
+                    finishAffinity();
                 } )
                 .setPositiveButton("Back", (dialog, which) -> {
                     //Dismiss and exit
                     dialog.dismiss();
-                    finishAffinity();
                 }).setCancelable(false).show();
     }
 
     @Override
     public void onBackPressed() {
-        exit();
-        if (doubleBackToExit){
-            super.onBackPressed();
-            return;
+        if(back_pressed + 2000 > System.currentTimeMillis()){
+            exit();
+        }else{
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_LONG).show();
         }
-        this.doubleBackToExit = true;
-//        Toast.makeText( this, "Click back again to exit", Toast.LENGTH_SHORT ).show();
-        new Handler( ).postDelayed( new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExit = false;
-            }
-        }, 2000 );
+        back_pressed = System.currentTimeMillis();
     }
 
     public void selectQuizSubject(){

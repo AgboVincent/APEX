@@ -188,10 +188,6 @@ public class QuizActivity extends AppCompatActivity {
             btn_next.setText("Next");
         }else{
             //Finish quiz.
-            TextView txtTitle = findViewById( R.id.txtTitle );
-            TextView txtMessage = findViewById( R.id.txtContent );
-            txtTitle.setText( "Quiz Results" );
-            txtMessage.setText( "Score: " + score );
             finishQuiz();
         }
     }
