@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:theme="@style/BaseTheme">
         <activity
-            android:name=".Screens.MainActivity"
+            android:name=".Screens.SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/BaseTheme">
             <intent-filter>
@@ -24,21 +24,34 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Screens.IntroScreen" />
+        <activity android:name=".Screens.IntroScreen"
+            android:theme="@style/BaseTheme"/>
         <activity android:name=".Screens.RegistrationActivity"
+            android:theme="@style/BaseTheme"
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity android:name=".Screens.LoginActivity"
+            android:theme="@style/BaseTheme"
             android:windowSoftInputMode="stateAlwaysVisible"/>
-        <activity android:name=".Screens.SplashScreen" />
-        <activity android:name=".Screens.QuizActivity" />
-        <activity android:name=".Screens.MathematicsActivity" />
-        <activity android:name=".Screens.ChemistryActivity" />
-        <activity android:name=".Screens.ApexBiologyActivity" />
-        <activity android:name=".Screens.ApexPhysicsActivity" />
-        <activity android:name=".Screens.PhysicsTopicsDisplay" />
-        <activity android:name=".Screens.BiologyTopicsDisplayActivity" />
-        <activity android:name=".Screens.ChemistryTopicsDisplayActivity" />
-        <activity android:name=".Screens.MathematicsTopicsDisplayActivity" />
+        <activity android:name=".Screens.MainActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.QuizActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.MathematicsActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.ChemistryActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.ApexBiologyActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.ApexPhysicsActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.PhysicsTopicsDisplay"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.BiologyTopicsDisplayActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.ChemistryTopicsDisplayActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".Screens.MathematicsTopicsDisplayActivity"
+            android:theme="@style/BaseTheme" />
 
         <activity android:name=".NoItemInternetImage" />
     </application>

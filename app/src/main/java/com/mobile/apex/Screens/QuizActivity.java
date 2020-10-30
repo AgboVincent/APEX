@@ -67,19 +67,18 @@ public class QuizActivity extends AppCompatActivity {
     private long back_pressed;
     String subjectType;
     boolean doubleBackToExit = false;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_new);
 
-        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService( Context.CONNECTIVITY_SERVICE );
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) {
 
         } else {
-            Intent i = new Intent(this, NoItemInternetImage.class);
-            startActivity(i);
+            Intent i = new Intent( this, NoItemInternetImage.class );
+            startActivity( i );
         }
 
         quiz_toolbar = findViewById(R.id.quiz_toolbar);
@@ -93,26 +92,26 @@ public class QuizActivity extends AppCompatActivity {
         btn_next = findViewById(R.id.btn_next);
 
         setSupportActionBar(quiz_toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull( getSupportActionBar() ).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("APEX Quiz");
-        quiz_toolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        quiz_toolbar.setTitleTextColor( getResources().getColor(R.color.colorPrimaryDark ));
         subjectType = getIntent().getStringExtra("subject_type");
         //Toast.makeText(this, "passed " + subjectType, Toast.LENGTH_LONG).show();
 
-        quiz_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        quiz_toolbar.setNavigationOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
-        });
+        } );
 
-        layoutGone = findViewById(R.id.layout_gone);
-        layoutGone.setVisibility(View.VISIBLE);
+        layoutGone = findViewById( R.id.layout_gone );
+        layoutGone.setVisibility( View.VISIBLE );
 
         fetchQuizzes(subjectType);
         final ProgressDialog progressDialog = new ProgressDialog(QuizActivity.this,
                 R.style.BaseTheme);
-        progressDialog.setIcon(R.mipmap.ic_launcher_round);
+        progressDialog.setIcon( R.mipmap.ic_launcher_round );
         progressDialog.setIndeterminate(true);
         progressDialog.setTitle("Loading...");
         progressDialog.setMessage("Please wait");
@@ -126,13 +125,13 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 }, 3000);
 
-        btn_next.setOnClickListener(v -> next());
+                btn_next.setOnClickListener(v -> next());
 
-    }
+            }
 
 
     public void fetchQuizzes(String subject) {
-        QuizApi quizApi = RetrofitServiceBuilder.getRetrofitInstance().create(QuizApi.class);
+        QuizApi quizApi =  RetrofitServiceBuilder.getRetrofitInstance().create(QuizApi.class);
 
         Call<QuizModel> call = quizApi.getQuizBySubject(subject);
         call.enqueue(new Callback<QuizModel>() {
@@ -140,8 +139,8 @@ public class QuizActivity extends AppCompatActivity {
             public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
 
                 if (response.isSuccessful()) {
-                    layoutGone.setVisibility(View.GONE);
-                    btn_next.setVisibility(View.VISIBLE);
+                    layoutGone.setVisibility( View.GONE );
+                    btn_next.setVisibility( View.VISIBLE );
                     QuizModel res = response.body();
                     List<QuizQuestionModel> data = res.getData();
                     beginQuiz(data);
@@ -156,26 +155,26 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-    private void beginQuiz(List<QuizQuestionModel> questions) {
+    private void beginQuiz(List<QuizQuestionModel> questions){
         question_total = questions.size();
         questionModels = questions;
         Collections.shuffle(questionModels);
         showNextQuestion();
     }
 
-    public void next() {
-        if (option_a.isChecked() || option_b.isChecked() || option_c.isChecked() || option_d.isChecked()) {
+    public void next(){
+        if(option_a.isChecked() || option_b.isChecked() || option_c.isChecked() || option_d.isChecked()){
             //Check answer and show next question;
             checkAnswer();
-        } else {
+        }else{
             Toast.makeText(this, "Kindly select an answer", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void showNextQuestion() {
+    private void showNextQuestion(){
         options_group.clearCheck();
 
-        if (question_counter < question_total) {
+        if(question_counter < question_total){
             current_question = questionModels.get(question_counter);
 
             mtv_question.setText(current_question.getQuestion());
@@ -185,59 +184,59 @@ public class QuizActivity extends AppCompatActivity {
             option_d.setText("D. " + current_question.getOption().getD());
 
             question_counter++;
-            mtv_question_number.setText("Question " + question_counter + "/" + questionModels.size());
+            mtv_question_number.setText("Question " + question_counter + "/20");
             btn_next.setText("Next");
-        } else {
+        }else{
             //Finish quiz.
             finishQuiz();
         }
     }
 
-    private void checkAnswer() {
-        switch (current_question.getAnswer()) {
+    private void checkAnswer(){
+        switch (current_question.getAnswer()){
             case "a":
-                if (option_a.isChecked()) {
+                if(option_a.isChecked()){
                     //Add to score and move on
                     score++;
                     Toast.makeText(this, "Correct !!!", Toast.LENGTH_LONG).show();
                     showNextQuestion();
-                } else {
+                }else{
                     //Failed and move on after 2 seconds
                     Toast.makeText(this, "Option A was the correct answer", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(() -> showNextQuestion(), 2000);
                 }
                 break;
             case "b":
-                if (option_b.isChecked()) {
+                if(option_b.isChecked()){
                     //Add to score and move on
                     score++;
                     Toast.makeText(this, "Correct !!!", Toast.LENGTH_LONG).show();
                     showNextQuestion();
-                } else {
+                }else{
                     //Failed and move on after 2 seconds
                     Toast.makeText(this, "Option B was the correct answer", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(() -> showNextQuestion(), 2000);
                 }
                 break;
             case "c":
-                if (option_c.isChecked()) {
+                if(option_c.isChecked()){
                     //Add to score and move on
                     score++;
                     Toast.makeText(this, "Correct !!!", Toast.LENGTH_LONG).show();
                     showNextQuestion();
-                } else {
+                }else{
                     //Failed and move on after 2 seconds
                     Toast.makeText(this, "Option C was the correct answer", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(() -> showNextQuestion(), 2000);
                 }
                 break;
             case "d":
-                if (option_d.isChecked()) {
+                if(option_d.isChecked()){
                     //Add to score and move on
                     score++;
                     Toast.makeText(this, "Correct !!!", Toast.LENGTH_LONG).show();
                     showNextQuestion();
-                } else {
+                }else{
                     //Failed and move on after 2 seconds
                     Toast.makeText(this, "Option D was the correct answer", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(() -> showNextQuestion(), 2000);
@@ -247,23 +246,23 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
-    private void finishQuiz() {
+    private void finishQuiz(){
         new AlertDialog.Builder(this)
                 .setTitle("Quiz Results")
                 .setMessage("Score: " + score)
+                .setIcon( R.mipmap.ic_launcher )
                 .setPositiveButton("Okay", (dialog, which) -> {
                     //Dismiss and go home
                     dialog.dismiss();
                     finish();
-                }).
-                setCancelable(false).show();
+                }).setCancelable(false).show();
     }
 
     @Override
     public void onBackPressed() {
-        if (back_pressed + 2000 > System.currentTimeMillis()) {
+        if(back_pressed + 2000 > System.currentTimeMillis()){
             finishQuiz();
-        } else {
+        }else{
             Toast.makeText(this, "Press back again to finish the quiz", Toast.LENGTH_LONG).show();
         }
         back_pressed = System.currentTimeMillis();

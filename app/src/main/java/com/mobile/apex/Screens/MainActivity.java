@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
         new android.app.AlertDialog.Builder(this)
                 .setTitle(R.string.about)
                 .setMessage(R.string.about_content)
+                .setIcon( R.mipmap.ic_launcher )
                 .setPositiveButton("Back", (dialog, which) -> {
                     //Dismiss and go home
                     dialog.dismiss();
@@ -138,13 +139,14 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Exit")
                 .setMessage("Are you sure you want to exit?")
-                .setPositiveButton("Back", (dialog, which) -> {
+                .setIcon( R.mipmap.ic_launcher )
+                .setPositiveButton("Yes", (dialog, which) -> {
                     //Dismiss and exit
                     dialog.dismiss();
-                })
-                .setNegativeButton( "Yes", (dialog, which) -> {
-                    dialog.dismiss();
                     finishAffinity();
+                })
+                .setNegativeButton( "Back", (dialog, which) -> {
+                    dialog.dismiss();
                 } ).setCancelable(false).show();
     }
 

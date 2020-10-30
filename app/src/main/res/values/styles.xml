@@ -15,6 +15,7 @@
         <item name="android:windowBackground">@drawable/popup_background</item>
     </style>
 
+
     <style name="ToolbarColorBackArrow" parent="BaseTheme">
         <item name="android:color">@color/white</item>
     </style>
@@ -74,7 +75,7 @@
 
 
     <style name="Dialog.Theme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -136,7 +137,7 @@
     </style>
 
     <style name="Drawer.Custom.Dark" parent="@style/ThemeOverlay.AppCompat.Light">
-        <item name="colorControlHighlight">#26000000</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
         <item name="listPreferredItemHeightSmall">60dp</item>
     </style>
 

@@ -7,8 +7,9 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#21778e</color>
     <color name="colorPrimaryLight">#2b92aa</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">@color/colorPrimaryDark</color>
     <color name="colorAccentDark">#FF225029</color>
+    <color name="textColorSecondary">@color/colorPrimaryDark</color>
     <color name="colorAccentLight">#FF357540</color>
 
     <color name="overlay_dark_10">#1A000000</color>
