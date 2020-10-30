@@ -79,7 +79,7 @@ public class ApexChemistryAdapter extends RecyclerView.Adapter<ApexChemistryAdap
             super(itemView);
             mContext = itemView.getContext();
             topics = itemView.findViewById(R.id.topic_title);
-            topicsPercentage = itemView.findViewById(R.id.topic_percentage);
+//            topicsPercentage = itemView.findViewById(R.id.topic_percentage);
             mCardView = itemView.findViewById(R.id.card);
         }
     }
