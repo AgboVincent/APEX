@@ -47,6 +47,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class QuizActivity extends AppCompatActivity {
+    public static final int DEFAULT_QUIZ_SIZE = 5;
     private TextView mtv_question;
     private TextView mtv_question_number;
     private RadioGroup options_group;
@@ -66,6 +67,7 @@ public class QuizActivity extends AppCompatActivity {
     private int score;
     private long back_pressed;
     String subjectType;
+    int quizSize;
     boolean doubleBackToExit = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,6 +98,7 @@ public class QuizActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("APEX Quiz");
         quiz_toolbar.setTitleTextColor( getResources().getColor(R.color.colorPrimaryDark ));
         subjectType = getIntent().getStringExtra("subject_type");
+        quizSize = getIntent().getIntExtra("quiz_size", DEFAULT_QUIZ_SIZE);
         //Toast.makeText(this, "passed " + subjectType, Toast.LENGTH_LONG).show();
 
         quiz_toolbar.setNavigationOnClickListener( new View.OnClickListener() {
@@ -108,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
         layoutGone = findViewById( R.id.layout_gone );
         layoutGone.setVisibility( View.VISIBLE );
 
-        fetchQuizzes(subjectType);
+        fetchQuizzes(quizSize, subjectType);
         final ProgressDialog progressDialog = new ProgressDialog(QuizActivity.this,
                 R.style.BaseTheme);
         progressDialog.setIcon( R.mipmap.ic_launcher_round );
@@ -130,10 +133,10 @@ public class QuizActivity extends AppCompatActivity {
             }
 
 
-    public void fetchQuizzes(String subject) {
+    public void fetchQuizzes(int size, String subject) {
         QuizApi quizApi =  RetrofitServiceBuilder.getRetrofitInstance().create(QuizApi.class);
 
-        Call<QuizModel> call = quizApi.getQuizBySubject(subject);
+        Call<QuizModel> call = quizApi.getQuizBySubject(size, subject);
         call.enqueue(new Callback<QuizModel>() {
             @Override
             public void onResponse(Call<QuizModel> call, Response<QuizModel> response) {
@@ -184,7 +187,7 @@ public class QuizActivity extends AppCompatActivity {
             option_d.setText("D. " + current_question.getOption().getD());
 
             question_counter++;
-            mtv_question_number.setText("Question " + question_counter + "/20");
+            mtv_question_number.setText("Question " + question_counter + "/" + questionModels.size());
             btn_next.setText("Next");
         }else{
             //Finish quiz.
