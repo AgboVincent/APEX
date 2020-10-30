@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.mobile.apex.ApexPhysicsAdapter;
 import com.mobile.apex.Models.ApexTopicsModel;
 import com.mobile.apex.R;
 

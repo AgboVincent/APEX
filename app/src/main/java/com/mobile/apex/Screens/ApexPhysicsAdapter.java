@@ -17,24 +17,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ApexBiologyAdapter extends RecyclerView.Adapter<ApexBiologyAdapter.MyViewHolder> {
+public class ApexPhysicsAdapter extends RecyclerView.Adapter<ApexPhysicsAdapter.MyViewHolder> {
     private Context mContext;
     private List<ApexTopicsModel> mApexTopicsModelList;
 
-    public ApexBiologyAdapter(Context context, List<ApexTopicsModel> apexTopicsModelList) {
+    public ApexPhysicsAdapter(Context context, List<ApexTopicsModel> apexTopicsModelList) {
         mContext = context;
         mApexTopicsModelList = apexTopicsModelList;
     }
 
     @NonNull
     @Override
-    public ApexBiologyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_course_modules, parent, false);
-        return new ApexBiologyAdapter.MyViewHolder(itemView);
+    public ApexPhysicsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate( R.layout.rv_course_modules, parent, false);
+        return new ApexPhysicsAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ApexBiologyAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ApexPhysicsAdapter.MyViewHolder holder, final int position) {
         ApexTopicsModel apexModel = mApexTopicsModelList.get(position);
         holder.topics.setText(apexModel.getTopics());
 //        holder.topicsPercentage.setText(apexModel.getTopicsPercentage());
@@ -56,7 +56,7 @@ public class ApexBiologyAdapter extends RecyclerView.Adapter<ApexBiologyAdapter.
                                 progressDialog.dismiss();
                             }
                         }, 2000);
-                Intent intent = new Intent(mContext, BiologyTopicsDisplayActivity.class);
+                Intent intent = new Intent(mContext, PhysicsTopicsDisplay.class);
                 intent.putExtra("position", position);
                 mContext.startActivity(intent);
             }

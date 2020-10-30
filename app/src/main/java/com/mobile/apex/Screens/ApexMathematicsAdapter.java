@@ -52,7 +52,7 @@ public class ApexMathematicsAdapter extends RecyclerView.Adapter<ApexMathematics
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         ApexTopicsModel apexModel = mApexTopicsModelList.get(position);
         holder.topics.setText(apexModel.getTopics());
-        holder.topicsPercentage.setText(apexModel.getTopicsPercentage());
+//        holder.topicsPercentage.setText(apexModel.getTopicsPercentage());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

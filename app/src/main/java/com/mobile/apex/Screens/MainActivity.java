@@ -138,14 +138,14 @@ public class MainActivity extends AppCompatActivity implements ApexAdapter.OnSub
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Exit")
                 .setMessage("Are you sure you want to exit?")
-                .setNegativeButton( "Yes", (dialog, which) -> {
-                    dialog.dismiss();
-                    finishAffinity();
-                } )
                 .setPositiveButton("Back", (dialog, which) -> {
                     //Dismiss and exit
                     dialog.dismiss();
-                }).setCancelable(false).show();
+                })
+                .setNegativeButton( "Yes", (dialog, which) -> {
+                    dialog.dismiss();
+                    finishAffinity();
+                } ).setCancelable(false).show();
     }
 
     @Override

@@ -36,7 +36,7 @@ public class ApexAdapter extends RecyclerView.Adapter<ApexAdapter.MyViewHolder> 
         ApexModel apexModel = mApexModelList.get(position);
         holder.subject.setText(apexModel.getSubject());
         holder.topics.setText(apexModel.getTopics());
-        holder.percentage.setText(apexModel.getPercentage());
+//        holder.percentage.setText(apexModel.getPercentage());
         holder.numOfModules.setText(apexModel.getNumOfModules());
 
 
@@ -59,7 +59,7 @@ public class ApexAdapter extends RecyclerView.Adapter<ApexAdapter.MyViewHolder> 
             //Initialize the views
             subject = itemView.findViewById(R.id.course_title);
             topics = itemView.findViewById(R.id.course_description);
-            percentage = itemView.findViewById(R.id.course_percentage);
+//            percentage = itemView.findViewById(R.id.course_percentage);
             numOfModules = itemView.findViewById(R.id.module_count);
 
             itemView.setOnClickListener(this);

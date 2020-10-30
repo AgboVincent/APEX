@@ -11,9 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:orientation="vertical"
+        android:theme="@style/BaseTheme">
         <activity
-            android:name=".Screens.SplashScreen"
+            android:name=".Screens.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/BaseTheme">
             <intent-filter>
@@ -28,7 +29,7 @@
             android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity android:name=".Screens.LoginActivity"
             android:windowSoftInputMode="stateAlwaysVisible"/>
-        <activity android:name=".Screens.MainActivity" />
+        <activity android:name=".Screens.SplashScreen" />
         <activity android:name=".Screens.QuizActivity" />
         <activity android:name=".Screens.MathematicsActivity" />
         <activity android:name=".Screens.ChemistryActivity" />
